@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import { useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Pagination = ({ currentPage, totalPages, onPageChange }) => {
     const getPageNumbers = () => {
@@ -140,32 +141,8 @@ export default function IdeasPage() {
 
     const totalPages = Math.ceil(totalItems / perPage);
     const dateOptions = { day: 'numeric', month: 'long', year: 'numeric' };
-    const menuItems = [
-        { name: 'Work', path: '/work' },
-        { name: 'About', path: '/about' },
-        { name: 'Ideas', path: '/ideas' },
-        { name: 'Careers', path: '/careers' },
-        { name: 'Contact', path: '/contact' },
-    ];
     return (
         <div className="min-h-screen bg-gray-50">
-            <header className={`fixed top-0 left-0 w-full z-50 transition-transform duration-300 bg-orange-500`}>
-                <nav className="flex justify-between items-center max-w-screen-xl mx-auto px-4 h-20">
-                    <img src="/suitmedialogo.png" alt="Suitmedia Logo" className="h-40 w-auto" />
-                    <ul className="flex gap-8">
-                        {menuItems.map(item => (
-                            <li key={item.name} className="relative group">
-                                <a href={item.path} className="text-white text-sm tracking-wider">
-                                    {item.name}
-                                </a>
-                                {location.pathname === item.path && (
-                                    <span className="absolute left-0 -bottom-2 w-full h-0.5 bg-white"></span>
-                                )}
-                            </li>
-                        ))}
-                    </ul>
-                </nav>
-            </header>
             <main>
                 <div className="w-full relative overflow-hidden pt-15">
                     <div ref={bannerRef} className="h-96 bg-cover bg-center" style={{ backgroundImage: `url('/banner.jpeg')`, clipPath: 'polygon(0 0, 100% 0, 100% 70%, 0% 100%)' }}>
